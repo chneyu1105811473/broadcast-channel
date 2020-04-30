@@ -10,17 +10,20 @@ function parsePlaylist(filepath){
 
 const result = parsePlaylist('./index.m3u')
 const files = result.items
-
-const output = []
+const coutries = []
 files.forEach(item=>{
-  output.push({
+  // 将解析的m3u8链接写入src的common/data目录下
+  const content = {
     title:item.name,
     list:parsePlaylist(item.url).items
-  })
+  }
+  const filename = item.name.replace(/\r/,'')
+  coutries.push(filename)
+  fs.writeFileSync(path.join(__dirname,`../src/common/data/${filename}.json`),JSON.stringify(content))
 })
 
-// 将目录写入src的common/data目录下
-fs.writeFileSync(path.resolve(__dirname,'../src/common/data/channels.json'),JSON.stringify(output))
+fs.writeFileSync(path.join(__dirname,`../src/utils/country.json`),JSON.stringify(coutries))
+
 
 
 

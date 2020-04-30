@@ -3,3 +3,10 @@
   top: 50% !important;
   transform: translate(-50%,-50%);
 }
+
+.mypop{
+  &.van-popup{
+    border-radius: 10px;
+    overflow: hidden;
+  }
+}
