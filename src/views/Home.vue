@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div class="search-container">
-      <Search v-model="value" :placeholder="`当前频道所属国家：${currentCountry}`" show-action>
+      <Search 
+      v-model="value" 
+      :placeholder="`当前国家：${currentCountry}`" 
+      show-action 
+      background="#f1f1f1"
+      :clearable="false">
         <template #action>
           <div @click="onSearch">搜索</div>
         </template>
@@ -111,6 +116,7 @@ export default {
       this.playerOpt.sources[0].src = this.channels.list[index].url
       this.playerOpt.poster = this.channels.list[index].tvg.logo
       this.show = false
+      this.currentBar = index
     },
     changeBar(index){
       this.getList(this.currentCountry,index)
@@ -121,20 +127,21 @@ export default {
 
 <style lang="scss" scoped>
 .search-container{
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+  margin: 40px auto;
+  max-width:500px;
+  // border: 1px solid #f1f1f1;
 }
 .play-container{
   display: flex;
   .side-bar{
-    max-height: 80vh;
+    max-height: 800px;
+    border: 1px solid #ececec;
     overflow: auto;
   }
   .player{
     flex: 1;
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: 1400px;
   }
 }
 .country-list{

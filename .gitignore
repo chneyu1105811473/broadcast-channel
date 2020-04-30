@@ -21,4 +21,4 @@ yarn-error.log*
 *.sw?
 
 # parse generate channels.json
-/src/common/data
+/src/common/data/*.json
