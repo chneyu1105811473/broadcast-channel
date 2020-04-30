@@ -104,6 +104,7 @@ export default {
       this.value = ''
     },
     onSearch(){
+      if(!this.value)return
       this.matchedCty = this.allCountries.filter(item=>{
         const reg = new RegExp(`${this.value}`,'i')
         return reg.test(item)
@@ -117,6 +118,7 @@ export default {
       this.playerOpt.poster = this.channels.list[index].tvg.logo
       this.show = false
       this.currentBar = index
+      this.value = ''
     },
     changeBar(index){
       this.getList(this.currentCountry,index)
